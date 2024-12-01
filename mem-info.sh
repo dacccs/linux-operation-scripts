@@ -1,10 +1,10 @@
 #!/bin/bash
-################################################
-# Memory Info Script                           #
-# Created: dacccs                              #
-# Last modification: 2024.11.07                #
-################################################
-VERSION=1.0004;
+###########################################################
+# Memory Info Script                                      #
+# Created: Ottó Király                                    #
+# Last modification: 2024.12.01                           #
+###########################################################
+VERSION=1.0005;
 IFS=$'\n';
 
 function trim {
@@ -23,8 +23,10 @@ function slot_output {
         let out_spacer=out_spacer+out_round;
         string=$string$(for ((i=1;i<=out_spacer;i++)); do echo -en █; done);
         printf "    %-28s %-s %-s\n\n" $1 $string $3;
+                #echo -e "\t$1\t$string\t$3\n";
     else
-		printf "    %-28s %-s\n\n" $1 '░░░░░░░░░░░░░░░░░ Empty ░░░░░░░░░░░░░░░░';
+                printf "    %-28s %-s\n\n" $1 '░░░░░░░░░░░░░░░░░ Empty ░░░░░░░░░░░░░░░░';
+                #echo -e "\t$1\t░░░░░░░░░░░░░░░░░ Empty ░░░░░░░░░░░░░░░░\n";
     fi;
 
 }
@@ -66,4 +68,3 @@ for i in `dmidecode -t memory | tr '\n' ';' | sed 's/;;/\n/g'`; do
         fi;
     fi;
 done
-
