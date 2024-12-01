@@ -1,7 +1,7 @@
 #!/bin/bash
 ###########################################################
 # Memory Info Script                                      #
-# Created: Ottó Király                                    #
+# Created: dacccs                                         #
 # Last modification: 2024.12.01                           #
 ###########################################################
 VERSION=1.0005;
