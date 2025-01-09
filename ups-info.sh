@@ -1,7 +1,7 @@
 #!/bin/bash
 ##########################################################
 # UPS Information Script                                 #
-# Created: Ottó Király                                   #
+# Created: dacccs                                        #
 # Last modification: 2025.01.09                          #
 ##########################################################
 VERSION=1.0002;
