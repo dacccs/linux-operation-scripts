@@ -2,13 +2,13 @@
 ###########################################################
 # Memory Info Script                                      #
 # Created: dacccs                                         #
-# Last modification: 2024.12.01                           #
+# Last modification: 2025.01.15                           #
 ###########################################################
-VERSION=1.0005;
+VERSION=1.0006;
 IFS=$'\n';
 
 function trim {
-    out=$(echo $1 | cut -d':' -f2 | sed -e 's/^ //g' -e 's/ $//g');
+    out=$(echo $1 | cut -d':' -f2 | sed -E 's/^[ ]+//g' | sed -E 's/[ ]+$//g');
     echo -en $out;
 }
 
@@ -23,10 +23,10 @@ function slot_output {
         let out_spacer=out_spacer+out_round;
         string=$string$(for ((i=1;i<=out_spacer;i++)); do echo -en █; done);
         printf "    %-28s %-s %-s\n\n" $1 $string $3;
-                #echo -e "\t$1\t$string\t$3\n";
+		#echo -e "\t$1\t$string\t$3\n";
     else
-                printf "    %-28s %-s\n\n" $1 '░░░░░░░░░░░░░░░░░ Empty ░░░░░░░░░░░░░░░░';
-                #echo -e "\t$1\t░░░░░░░░░░░░░░░░░ Empty ░░░░░░░░░░░░░░░░\n";
+		printf "    %-28s %-s\n\n" $1 '░░░░░░░░░░░░░░░░░ Empty ░░░░░░░░░░░░░░░░';
+		#echo -e "\t$1\t░░░░░░░░░░░░░░░░░ Empty ░░░░░░░░░░░░░░░░\n";
     fi;
 
 }
@@ -68,3 +68,5 @@ for i in `dmidecode -t memory | tr '\n' ';' | sed 's/;;/\n/g'`; do
         fi;
     fi;
 done
+
+
