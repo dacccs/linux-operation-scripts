@@ -4,7 +4,7 @@
 # Created: dacccs                              #
 # Last modification: 2025.02.25                #
 ################################################
-VERSION=1.0000; 
+VERSION=1.0001; 
 size=$(echo $1 | tr -dc [0-9]);
 sizeg=$size'G';
 
@@ -24,3 +24,4 @@ else
 fi	
 
 mount -o remount /dev/shm	
+systemctl daemon-reload
