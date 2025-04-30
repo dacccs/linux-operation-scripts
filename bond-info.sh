@@ -2,9 +2,9 @@
 ################################################
 # Bond Check Script                            #
 # Created: dacccs                              #
-# Last modification: 2021.07.26                #
+# Last modification: 2025.03.13                #
 ################################################
-VERSION=1.0051; 
+VERSION=1.0052; 
 
 function info {
 	echo -e '\e[1;32m'$*'\e[0m\n';
@@ -34,7 +34,7 @@ for BOND_FILE in `ls -1 $BOND_PATH/bond* | grep -iv '\.'`; do
 	if (( $SLAVES < 2 )); then STRING='\nOnly one slave interface is available.'; let COUNT++; fi;
 	if (( $(cat $BOND_PATH/$BOND | grep -m1 802.3ad -c) )); then
 		MII=$(cat $BOND_PATH/$BOND | grep "MII Status" | head -1 | rev | cut -d' ' -f1 | rev);
-		if [[ $MII != 'up' ]]; then STRING='\nLACP not working.'; let COUNT++; fi;
+		if [[ "$MII" != 'up' ]]; then STRING='\nLACP not working.'; let COUNT++; fi;
 	fi;
 	
 	# Bond interface name coloring according the status of the device
